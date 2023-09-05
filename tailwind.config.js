@@ -15,7 +15,11 @@ module.exports = {
       height: {
         '85' : '85vh',
       },
+      minHeight: {
+        '40' : '10rem',
+      }
     },
+
   },
   plugins: [],
 }

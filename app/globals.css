@@ -4,20 +4,33 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb:rgb(238, 235, 235);
-  --background-end-rgb: 255, 255, 255;
+  --background-rgb: 255, 255, 255;
 }
 
 /* @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-rgb: 238, 235, 235;
+    --background-rgb: 0, 0, 0;
   }
 } */
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: white;
+  background: rgb(var(--background-rgb));
   font-size: 14px;
+}
+*::selection {
+  background-color: #ef4444;
+  color: white;
+}
+
+*::-webkit-scrollbar {
+  width: 10px; /* Mostly for vertical scrollbars */
+  height: 10px; /* Mostly for horizontal scrollbars */
+}
+*::-webkit-scrollbar-thumb { /* Foreground */
+  background:  #ef4444;
+}
+*::-webkit-scrollbar-track { /* Background */
+  background: #99999917;
 }

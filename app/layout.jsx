@@ -2,9 +2,9 @@ import './globals.css'
 import { Inter, Montserrat } from 'next/font/google'
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+import Nav from './nav'
 config.autoAddCss = false
 
-const inter = Inter({ subsets: ['latin'] })
 const montserrat = Montserrat({ subsets: ['latin'] })
 
 export const metadata = {
@@ -15,8 +15,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-    
-      <body className={montserrat.className}>
+      <body className={`${ montserrat.className } flex max-h-screen flex-col items-center w-full` }>
+        <Nav />
+        
         {children}
       </body>
     </html>

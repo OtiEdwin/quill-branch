@@ -1,53 +1,189 @@
+'use client'
+
 import Image from 'next/image'
-import Nav from './nav'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFeather, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faEye, faEyeSlash, faFeather, faPaperPlane, faShare, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center w-full">
-      <Nav />
-      <section className = 'flex flex-row justify-between w-11/12 h-12/12 m-auto relative'>
-        <div className="illustration flex flex-col justify-end relative bg-red-50 h-85 w-5/12 border-2 border-red-500 rounded">
-          <div className = 'absolute -z-10 h-full w-full -bottom-2.5 -left-2.5 bg-red-500 rounded'></div>
-          <Image className = 'mx-auto drop-shadow' alt = 'hero image' src = '/hero-img.png' width = {400} height = {400}/>
+    <section className = 'flex flex-row justify-center w-11/12 m-auto mt-0 relative'>
+      <div className="bio flex flex-col sticky w-3/12 rounded-3xl mt-6 h-85">
+        <div className="relative bg-white w-11/12 min-h-40 rounded-2xl flex flex-col justify-content mx-auto border border-gray-300 mb-3 overflow-hidden">
+          <div className="cover h-2/6 w-full bg-red-50">
 
-          <div className = "bg-white border-2 py-2 px-4 text-sm text-start border-red-400 absolute shadow-xl7 rounded-2xl w-66 top-28 -right-14">
-            <div className='flex flex-row justify-between'>
-              <div className=" flex w-9 h-9 rounded-full bg-red-500 me-2">
-                <FontAwesomeIcon className='text-sm text-white mx-3 my-auto' icon={faFeather} />
-              </div>
-              <div className="m-auto">
-                The great outdoors is where life happens.            
-              </div>
-            </div>
-
-            <div className='flex flex-row w-full my-2'>
-              <div className = "bg-red-400 w-1 h-1 rounded-full" ></div>  
-              <div className = "bg-red-400 h-1 mx-1 w-11/12 rounded" ></div>
-            </div>
           </div>
-
-          <div className = "flex flex-row justify-between bg-white border-2 py-2 px-4 text-sm border-red-400 absolute shadow-xl rounded-2xl w-auto top-10 -left-10">
-            <div className=" flex w-9 h-9 rounded-full bg-red-500 me-2">
-              <FontAwesomeIcon className='text-sm text-white m-auto' icon={faFeather} />
-            </div>
-            <div className="m-auto">
-              Trancenedence is true freedom.
-            </div>
+          <div className="image w-12 h-12 rounded-full bg-red-500 flex justify-center overflow-hidden absolute top-8 left-1/2 -translate-x-1/2">
+            <FontAwesomeIcon className='text-sm text-white mx-3 my-auto' icon={faFeather} />
+            {/* <Image alt='profile picture'/> */}
+          </div>
+          <div className='h-4/6 flex flex-col justify-center'>
+            <p className='text-red font-semibold text-center text-red-500'>Otonye Hillary Edwin</p>
+            <p className='text-red text-xs font-semibold text-center text-black-700'>@otieddie</p>
+            <p className='text-center text-xs'>Transcendence is true Freedom</p>
           </div>
         </div>
 
-        <div className="ring-24 ring-red-300"></div>
+        <div className="relative bg-white w-11/12 h-full rounded-2xl flex flex-col justify-content mx-auto border border-gray-300 mb-3 overflow-hidden">
+          <div className="cover flex h-8 w-full bg-red-50">
+            <p className = "text-red-500 font-semibold ms-4 my-auto">Following</p>
+          </div>
 
+          <div className='h-4/6 flex flex-col justify-center'>
+          </div>
+        </div>
+      </div>
 
-        <div className="description flex flex-col justify-center ms-16 w-6/12">
-          <FontAwesomeIcon className='text-4xl text-red-500' icon={faFeather} />
-          <h1 className = "flex flex-row text-gray-700 text-5xl font-extrabold my-4">Feeling Inspired? <div className = "text-red-500"> Quill</div></h1>
-          <p className='text-start'>A social media for Writers. Share your art with the world. Experience The world through your mind, Rewrite the universe with a Quill.</p>
-          <button className='bg-red-500 hover:bg-red-600 py-2 px-16 text-white rounded my-4 font-bold w-fit'>Sign In</button>
-        </div>        
-      </section>
-    </main>
+      <div className="post-panel flex flex-col justify-start w-6/12 mx-6 mt-6 border-l border-gray-300 px-8">
+        <div className = "posts-plain bg-white border p-4 text-sm text-start border-gray-300 rounded-2xl w-full mb-4">
+          <div className='flex flex-row justify-start'>
+            <div className=" flex w-10 h-10 rounded-full bg-red-500 me-2">
+              <FontAwesomeIcon className='text-sm text-white mx-3 my-auto' icon={faFeather} />
+            </div>
+            <div className="my-auto mx-1 text-red-500 font-bold text-start">
+              John Doe            
+            </div>
+          </div>
+
+          <p className='content my-2'>
+            This is the content of this post it is meant to be short and give a fee for how a quill post is to supposed be.
+          </p>
+
+          <div className='actons flex flex-row justify-end'>
+            <div className='likes flex flex-col justify-center me-3'>
+              <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faThumbsUp} />
+              <div className='text-center text-xs font-bold text-gray-400'>{ 109 }</div>
+            </div>
+            <div className='views flex flex-col justify-center me-3'>
+              <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faEye} />
+              <div className='text-center text-xs font-bold text-gray-400'>{ 102 }k+</div>
+            </div>
+            <div className='share flex flex-col justify-center me-3'>
+              <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faShare} />
+              <div className='text-center text-xs font-bold text-gray-400'>{ 10 }</div>
+            </div>
+
+          </div>
+
+          <div className='flex flex-row w-full my-2'>
+            <div className = "bg-red-400 w-1 h-1 rounded-full" ></div>  
+            <div className = "bg-red-400 h-1 mx-1 w-11/12 rounded" ></div>
+          </div>
+        </div>
+
+        <div className = "post-snippet bg-white border p-4 text-sm text-start border-gray-300 rounded-2xl w-full mb-4">
+          <div className='flex flex-row justify-start'>
+            <div className=" flex w-10 h-10 rounded-full bg-red-500 me-2">
+              <FontAwesomeIcon className='text-sm text-white mx-3 my-auto' icon={faFeather} />
+            </div>
+            <div className="my-auto mx-1 text-red-500 font-bold text-start">
+              John Doe            
+            </div>
+          </div>
+
+          <div className='snippet border-s-8 border-red-600 bg-red-50 text-red-600 p-3 my-2 rounded-md font-semibold'>
+            <p>Snippet : {`"An empty glass of wine"`}</p>
+          </div>
+
+          <p className='content my-2'>
+            I am forced to embrace my new found self, hail and hearty but with an empty void in my soul.
+          </p>
+
+          <div className='actons flex flex-row justify-end'>
+            <div className='likes flex flex-col justify-center me-3'>
+              <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faThumbsUp} />
+              <div className='text-center text-xs font-bold text-gray-400'>{ 109 }</div>
+            </div>
+            <div className='views flex flex-col justify-center me-3'>
+              <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faEye} />
+              <div className='text-center text-xs font-bold text-gray-400'>{ 102 }k+</div>
+            </div>
+            <div className='share flex flex-col justify-center me-3'>
+              <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faShare} />
+              <div className='text-center text-xs font-bold text-gray-400'>{ 10 }</div>
+            </div>
+
+          </div>
+
+          <div className='flex flex-row w-full my-2'>
+            <div className = "bg-red-400 w-1 h-1 rounded-full" ></div>  
+            <div className = "bg-red-400 h-1 mx-1 w-11/12 rounded" ></div>
+          </div>
+        </div>
+
+        <div className = "posts-plain bg-white border p-4 text-sm text-start border-gray-300 rounded-2xl w-full mb-4">
+          <div className='flex flex-row justify-start'>
+            <div className=" flex w-10 h-10 rounded-full bg-red-500 me-2">
+              <FontAwesomeIcon className='text-sm text-white mx-3 my-auto' icon={faFeather} />
+            </div>
+            <div className="my-auto mx-1 text-red-500 font-bold text-start">
+              John Doe            
+            </div>
+          </div>
+
+          <p className='content my-2'>
+            This is the content of this post it is meant to be short and give a fee for how a quill post is to supposed be.
+          </p>
+
+          <div className='actons flex flex-row justify-end'>
+            <div className='likes flex flex-col justify-center me-3'>
+              <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faThumbsUp} />
+              <div className='text-center text-xs font-bold text-gray-400'>{ 109 }</div>
+            </div>
+            <div className='views flex flex-col justify-center me-3'>
+              <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faEye} />
+              <div className='text-center text-xs font-bold text-gray-400'>{ 102 }k+</div>
+            </div>
+            <div className='share flex flex-col justify-center me-3'>
+              <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faShare} />
+              <div className='text-center text-xs font-bold text-gray-400'>{ 10 }</div>
+            </div>
+
+          </div>
+
+          <div className='flex flex-row w-full my-2'>
+            <div className = "bg-red-400 w-1 h-1 rounded-full" ></div>  
+            <div className = "bg-red-400 h-1 mx-1 w-11/12 rounded" ></div>
+          </div>
+        </div>
+
+        <div className = "posts-plain bg-white border p-4 text-sm text-start border-gray-300 rounded-2xl w-full mb-4">
+          <div className='flex flex-row justify-start'>
+            <div className=" flex w-10 h-10 rounded-full bg-red-500 me-2">
+              <FontAwesomeIcon className='text-sm text-white mx-3 my-auto' icon={faFeather} />
+            </div>
+            <div className="my-auto mx-1 text-red-500 font-bold text-start">
+              John Doe            
+            </div>
+          </div>
+
+          <p className='content my-2'>
+            This is the content of this post it is meant to be short and give a fee for how a quill post is to supposed be.
+          </p>
+
+          <div className='actons flex flex-row justify-end'>
+            <div className='likes flex flex-col justify-center me-3'>
+              <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faThumbsUp} />
+              <div className='text-center text-xs font-bold text-gray-400'>{ 109 }</div>
+            </div>
+            <div className='views flex flex-col justify-center me-3'>
+              <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faEye} />
+              <div className='text-center text-xs font-bold text-gray-400'>{ 102 }k+</div>
+            </div>
+            <div className='share flex flex-col justify-center me-3'>
+              <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faShare} />
+              <div className='text-center text-xs font-bold text-gray-400'>{ 10 }</div>
+            </div>
+
+          </div>
+
+          <div className='flex flex-row w-full my-2'>
+            <div className = "bg-red-400 w-1 h-1 rounded-full" ></div>  
+            <div className = "bg-red-400 h-1 mx-1 w-11/12 rounded" ></div>
+          </div>
+        </div>
+      </div>
+
+      
+    </section>
   )
 }
