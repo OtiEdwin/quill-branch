@@ -4,13 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faFeather, faPaperPlane, faShare, faThumbsUp, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 async function getPosts() {
-  const response = await fetch('http://localhost:3000/api/getposts');
+  const { signal } = new AbortController()
+  const response = await fetch('http://localhost:3000/api/getposts', { signal });
   const data = await response.json();
+  console.log(data)
   return data
 }
 
 export default async function Home() {
-  const posts = await getPosts()
+  let posts = await getPosts()
 
   return (
     <section className = 'flex flex-row justify-center w-11/12 m-auto mt-0 relative'>

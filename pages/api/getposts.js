@@ -51,6 +51,7 @@ let posts = [
 export default function handler (request, response){
    try {
       console.log(request.body)
+      console.log( posts )
       response.status(200).json( posts )
    } catch (error) {
       response.status(500).json(error)  
