@@ -6,16 +6,19 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons'
 
-export default function Nav({ tab }){
-  let tabs = [
-    { tab : 'home', href : '/' }, 
-    { tab : 'login', href : '/login' }, 
-    { tab : 'signup', href : '/signup' }
-  ]
+export default function Nav({ isLoggedIn }){
+  let tabs = !isLoggedIn ? [ { tab : 'Home', href : '/' }, { tab : 'Login', href : '/login' }, { tab : 'Signup', href : '/signup' } ] : [ { tab : 'home', href : '/' }, { tab : 'logout', href : '/login' } ]
   const pathname = usePathname()
+  // const [ toggleState, setToggleState ] = useState({ toggle : 'none', anti_toggle : 'flex' })  
+
+  // useEffect(()=>{
+  //     if ( window.innerWidth <= 500){
+  //         setToggleState({ toggle : 'flex', anti_toggle : 'none' })
+  //     }
+  // })
 
   return (
-    <nav className = "flex flex-row sticky left-0 top-0 justify-center w-full py-2 bg-white shadow-sm shadow-gray-300 z-10">
+    <nav className = "flex flex-row sticky left-0 top-0 justify-center w-full py-2 bg-transparent backdrop-blur-sm border-b border-gray-300 shadow-gray-300 z-10">
       <div className="flex flex-row justify-between w-11/12 ">
         <div className ="flex flex-row">
           <h1 className="font-bold text-2xl text-red-500 my-auto">Quill</h1>
@@ -26,7 +29,7 @@ export default function Nav({ tab }){
             tabs.map((index)=>{
               const is_active = pathname === index.href
               return(
-                <Link href={ index.href } key = { index.tab } className = { `flex flex-col justify-center h-full my-auto px-3 mx-1 font-semibold text-sm ${ is_active? "text-red-500 bg-red-50" : "text-gray-500" } hover:text-red-600 hover:bg-red-50 rounded`} >{ index.tab }</Link>
+                <Link href={ index.href } key = { index.tab } className = { `flex flex-col justify-center h-full my-auto px-4 mx-1 font-semibold text-sm ${ is_active? "text-red-500" : "text-gray-500" } hover:text-red-600 hover:bg-red-50 rounded`} >{ index.tab }</Link>
               ) 
             })
           }

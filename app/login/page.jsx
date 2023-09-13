@@ -1,19 +1,50 @@
 'use client'
+import React, { useState } from 'react'
 import Image from 'next/image'
-import Nav from '../components/nav'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFeather, faPaperPlane, faEnvelope, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
+import { faFeather, faEnvelope, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 
-async function login(){
- const data = await fetch(`http://localhost:3000/pages/api/login`)
- console.log(data)
- console.log("time to login")
-}
+
 
 export default function Home() {
+   const [isLogged, setIsLogged] = useState(false)
+   const [isLoading, setIsLoading] = useState(false)
+   const [error, setError ] = useState(null)
+
+   async function login(){
+      let email = document.querySelector('#email').value
+      let password = document.querySelector('#password').value
+
+      let info = {
+         email: email,
+         password: password
+      }
+      console.log(info)
+
+      try {
+         setIsLoading(true)
+         const data = await fetch(
+            `http://localhost:3000/api/login`, 
+            {
+               method: "post",
+               headers: {
+                  "Content-Type": "application/json"
+               },
+               body: JSON.stringify(info)
+            }
+         )        
+         console.log(`logged in as ${ data.name }, with folowers ${ data.folowers }`)
+      } catch (error) {
+         setError(error.message)
+      } finally{
+         setIsLoading(false)
+      }
+
+   }
+
    return (
       <section className = 'flex flex-row justify-between w-11/12 h-12/12 m-auto relative'>
-         <div className="illustration flex flex-col justify-end relative bg-red-50 h-85 w-5/12 border-2 border-gray-500 rounded-3xl">
+         <div className="illustration flex flex-col justify-end relative bg-red-50 h-85 w-5/12 border-2 border-red-500 rounded-3xl">
             <div className = 'absolute -z-10 h-full w-full -bottom-2.5 -left-2.5 bg-red-500 rounded-3xl'></div>
             <Image className = 'mx-auto drop-shadow' alt = 'hero image' src = '/hero-img.png' width = {400} height = {400}/>
 
@@ -38,7 +69,7 @@ export default function Home() {
                   <FontAwesomeIcon className='text-sm text-white m-auto' icon={faFeather} />
                </div>
                <div className="m-auto">
-               Trancenedence is true freedom.
+                  Trancenedence is true freedom.
                </div>
             </div>
          </div>
@@ -53,19 +84,20 @@ export default function Home() {
                <FontAwesomeIcon className='text-2xl text-red-500 me-2 my-auto' icon={faFeather} />
                Login
                </h1>
-               <form action="" method="">
-                  <div className = "relative input flex flex-col my-6">
-                     <FontAwesomeIcon className='text-md text-red-500 me-2 my-auto absolute top-2/4 right-2 -translate-y-2/4' icon={faEnvelope} />
-                     <label className ="text-red-500 text-start font-bold text-xs capitalize absolute -top-2 left-5 bg-white px-1" htmlFor="email">Email</label>
-                     <input className='w-full border border-gray-300  focus:outline-red-500 rounded-full px-6 py-3 text-xs' type="email" name="email" id="email" placeholder='quilluser@email.com' />
-                  </div>
-                  <div className = "relative input flex flex-col my-6">
-                     <FontAwesomeIcon className='text-md text-red-500 me-2 my-auto absolute top-2/4 right-2 -translate-y-2/4' icon={faEye} />
-                     <label className='text-red-500 text-start font-bold text-xs capitalize absolute -top-2 left-5 bg-white px-1' htmlFor="password">Password</label>
-                     <input className='w-full border border-gray-300 focus:outline-red-500 rounded-full px-6 py-3 text-xs' type="password" name="password" id="password" placeholder='********' />
-                  </div>
-                  <button className='bg-red-500 hover:bg-red-600 py-3 px-20 text-white rounded my-4 font-bold w-fit'  onClick={ () => login() }>Login</button>                  
-               </form>               
+               {error && <div className='text-black bg-red p-4 rounded-md border border-black'> { error } </div>}
+               <div className = "form relative input flex flex-col my-6">
+                  <FontAwesomeIcon className='text-md text-red-500 me-2 my-auto absolute top-2/4 right-2 -translate-y-2/4' icon={faEnvelope} />
+                  <label className ="text-red-500 text-start font-bold text-xs capitalize absolute -top-2 left-5 bg-white px-1" htmlFor="email">Email</label>
+                  <input className='w-full border border-gray-300  focus:outline-red-500 rounded-full px-6 py-3 text-xs' type="email" name="email" id="email" placeholder='quilluser@email.com' />
+               </div>
+               <div className = "relative input flex flex-col my-6">
+                  <FontAwesomeIcon className='text-md text-red-500 me-2 my-auto absolute top-2/4 right-2 -translate-y-2/4' icon={faEye} />
+                  <label className='text-red-500 text-start font-bold text-xs capitalize absolute -top-2 left-5 bg-white px-1' htmlFor="password">Password</label>
+                  <input className='w-full border border-gray-300 focus:outline-red-500 rounded-full px-6 py-3 text-xs' type="password" name="password" id="password" placeholder='********' />
+               </div>
+               <button disabled={ isLoading } className='bg-red-500 hover:bg-red-600 py-3 px-20 text-white rounded my-4 font-bold w-fit'  onClick={ () => login() }>
+                  { isLoading? <>`Login` <Image alt = '' width={10} height={10}/></> :`Login` }
+               </button>                  
             </div>
          </div>        
       </section>
