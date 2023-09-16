@@ -1,9 +1,26 @@
-'use client'
-
 import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faEye, faEyeSlash, faFeather, faPaperPlane, faShare, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 
+async function like(post){
+   try{
+      const response = await fetch(
+         'http://localhost:3000/api/like',
+         {
+            method: "post",
+            headers: {
+               "Content-Type": "application/json"
+            },
+            body: JSON.stringify(post.id)
+         }
+         )
+      const data = response.json()
+   } catch(error) {
+      console.log(error)
+   } finally {
+      post.likes ++
+   }
+}
 
 export default function Post({ postData }) {
    if (postData.type == "snippet"){
@@ -27,19 +44,18 @@ export default function Post({ postData }) {
             </p>
 
             <div className='actons flex flex-row justify-end'>
-            <div className='likes flex flex-col justify-center me-3'>
-               <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faThumbsUp} />
-               <div className='text-center text-xs font-bold text-gray-400'>{ postData.likes }</div>
-            </div>
-            <div className='views flex flex-col justify-center me-3'>
-               <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faEye} />
-               <div className='text-center text-xs font-bold text-gray-400'>{ postData.views }</div>
-            </div>
-            <div className='share flex flex-col justify-center me-3'>
-               <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faShare} />
-               <div className='text-center text-xs font-bold text-gray-400'>{ postData.share }</div>
-            </div>
-
+               <div className='likes flex flex-col justify-center me-3 h-8 w-8 rounded-full hover:bg-red-50' onClick = { () => like( postData ) } >
+                  <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faThumbsUp} />
+                  <div className='text-center text-xs font-bold text-gray-400'>{ postData.likes }</div>
+               </div>
+               <div className='views flex flex-col justify-center me-3 h-8 w-8 rounded-full hover:bg-red-50'>
+                  <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faEye} />
+                  <div className='text-center text-xs font-bold text-gray-400'>{ postData.views }</div>
+               </div>
+               <div className='share flex flex-col justify-center me-3 h-8 w-8 rounded-full hover:bg-red-50'>
+                  <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faShare} />
+                  <div className='text-center text-xs font-bold text-gray-400'>{ postData.share }</div>
+               </div>
             </div>
 
             <div className='flex flex-row w-full my-2'>
@@ -65,19 +81,18 @@ export default function Post({ postData }) {
             </p>
 
             <div className='actons flex flex-row justify-end'>
-            <div className='likes flex flex-col justify-center me-3'>
-               <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faThumbsUp} />
-               <div className='text-center text-xs font-bold text-gray-400'>{ postData.likes }</div>
-            </div>
-            <div className='views flex flex-col justify-center me-3'>
-               <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faEye} />
-               <div className='text-center text-xs font-bold text-gray-400'>{ postData.views }k+</div>
-            </div>
-            <div className='share flex flex-col justify-center me-3'>
-               <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faShare} />
-               <div className='text-center text-xs font-bold text-gray-400'>{ postData.shares }</div>
-            </div>
-
+               <div className='likes flex flex-col justify-center me-3 h-8 w-8 rounded-full hover:bg-red-50' onClick={ () => like( postData ) }>
+                  <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faThumbsUp} />
+                  <div className='text-center text-xs font-bold text-gray-400'>{ postData.likes }</div>
+               </div>
+               <div className='views flex flex-col justify-center me-3 h-8 w-8 rounded-full hover:bg-red-50'>
+                  <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faEye} />
+                  <div className='text-center text-xs font-bold text-gray-400'>{ postData.views }k+</div>
+               </div>
+               <div className='share flex flex-col justify-center me-3 h-8 w-8 rounded-full hover:bg-red-50'>
+                  <FontAwesomeIcon className='text-lg text-red-500 mx-3 my-auto' icon={faShare} />
+                  <div className='text-center text-xs font-bold text-gray-400'>{ postData.shares }</div>
+               </div>
             </div>
 
             <div className='flex flex-row w-full my-2'>
