@@ -9,36 +9,36 @@ export default function Home() {
    const [isLoading, setIsLoading] = useState(false)
    const [error, setError ] = useState(null)
 
-   async function login(){
-      let email = document.querySelector('#email').value
-      let password = document.querySelector('#password').value
+   // async function login(){
+   //    let email = document.querySelector('#email').value
+   //    let password = document.querySelector('#password').value
 
-      let info = {
-         email: email,
-         password: password
-      }
-      console.log(info)
+   //    let info = {
+   //       email: email,
+   //       password: password
+   //    }
+   //    console.log(info)
 
-      try {
-         setIsLoading(true)
-         const data = await fetch(
-            `http://localhost:3000/api/login`, 
-            {
-               method: "post",
-               headers: {
-                  "Content-Type": "application/json"
-               },
-               body: JSON.stringify(info)
-            }
-         )        
-         console.log(`logged in as ${ data.name }, with folowers ${ data.folowers }`)
-      } catch (error) {
-         setError(error.message)
-      } finally {
-         setIsLoading(false)
-      }
+   //    try {
+   //       setIsLoading(true)
+   //       const data = await fetch(
+   //          `http://localhost:3000/api/login`, 
+   //          {
+   //             method: "post",
+   //             headers: {
+   //                "Content-Type": "application/json"
+   //             },
+   //             body: JSON.stringify(info)
+   //          }
+   //       )        
+   //       console.log(`logged in as ${ data.name }, with folowers ${ data.folowers }`)
+   //    } catch (error) {
+   //       setError(error.message)
+   //    } finally {
+   //       setIsLoading(false)
+   //    }
 
-   }
+   // }
 
    return (
       <section className = 'flex flex-row justify-between w-11/12 h-12/12 m-auto relative'>
@@ -93,7 +93,7 @@ export default function Home() {
                   <label className='text-red-500 text-start font-bold text-xs capitalize absolute -top-2 left-5 bg-white px-1' htmlFor="password">Password</label>
                   <input className='w-full border border-gray-300 focus:outline-red-500 rounded-full px-6 py-3 text-xs' type = "password" name="password" id="password" placeholder='********' />
                </div>
-               <button disabled={ isLoading } className='bg-red-500 hover:bg-red-600 py-3 px-20 text-white rounded my-4 font-bold w-fit'  onClick={ () => login() }>
+               <button disabled={ isLoading } className='bg-red-500 hover:bg-red-600 py-3 px-20 text-white rounded my-4 font-bold w-fit'>
                   { isLoading? <>`Login` <Image alt = '' width={10} height={10}/></> :`Login` }
                </button>                  
             </div>

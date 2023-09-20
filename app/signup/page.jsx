@@ -41,7 +41,7 @@ export default function Home() {
                      <label className='text-red-500 text-start font-bold text-xs capitalize absolute -top-2 left-5 bg-white px-1' htmlFor="confirm-password">Confirm Password</label>
                      <input className='w-full border border-gray-300 text-xs active:border-gray-500 active:outline-red-500 focus:outline-red-500 rounded-full px-6 py-3' type="password" name="confirm-password" id="password" placeholder='********' />
                   </div>
-                  <button className='bg-red-500 hover:bg-red-600 py-2 px-16 text-white rounded my-4 font-bold w-fit'  onClick={ () => signup() }>Sign up</button>                  
+                  <button className='bg-red-500 hover:bg-red-600 py-2 px-16 text-white rounded my-4 font-bold w-fit' >Sign up</button>                  
                </form>               
             </div>
 
