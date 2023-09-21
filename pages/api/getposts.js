@@ -6,6 +6,8 @@ let posts = [
       content: "transcendence is true freedom",
       likes: 1000,
       shares: 10,
+      liked: 1,
+      shared: 0,
       comments: 5,
    },
    {
@@ -16,6 +18,8 @@ let posts = [
       snippet: "an empty glass of wine",
       likes: 2500,
       shares: 10,
+      liked: 0,
+      shared: 0,
       comments: 5,
    },
    {
@@ -25,6 +29,8 @@ let posts = [
       content: "transcendence is true freedom",
       likes: 10000,
       shares: 10,
+      liked: 1,
+      shared: 1,
       comments: 5,
    },
    {
@@ -34,6 +40,8 @@ let posts = [
       content: "and I am forced to embrace my new found self, hail and hearty but with an empty void in my soul",
       likes: 21000,
       shares: 10,
+      liked: 1,
+      shared: 1,
       comments: 5,
    },
    {
@@ -44,6 +52,8 @@ let posts = [
       snippet: "an empty glass of wine",
       likes: 1500,
       shares: 10,
+      liked: 0,
+      shared: 0,
       comments: 5,
    },
 ]
@@ -51,7 +61,7 @@ let posts = [
 export default function handler (request, response){
    try {
       console.log(request.body)
-      console.log( posts )
+      // console.log( posts )
       // TODO - get data using the Algorithm and feed into the response in place of "posts"
 
       response.status(200).json( posts )

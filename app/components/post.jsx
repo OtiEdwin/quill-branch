@@ -25,11 +25,10 @@ import Modal from './modal'
 // }
 
 export default function Posts({ data }) {
-   const [ modalType, setModalType ] = useState('info')
+   const [ modalType, setModalType ] = useState('')
 
    function modSet(){
       console.log('select from post type')
-      setModalType('book')
    }
 
    return(
@@ -37,9 +36,8 @@ export default function Posts({ data }) {
          {
             data.map((post) => { return <Post key={post.key} postData={ post }/> })
          }
-      <Create onClick = { modSet } />
-      <Modal type = { modalType } />
-      {/* <Modal type = 'select' /> */}
+         <Create onClick = { setModalType('book') } />
+         <Modal type = { modalType } />
       </div>      
    )
 }
