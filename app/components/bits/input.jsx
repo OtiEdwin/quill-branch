@@ -47,7 +47,7 @@ export default function Input ({ type, placeholder, icon, id }) {
    }
    return(
       <div className = "relative input flex flex-col my-2">
-         <FontAwesomeIcon className='text-md text-red-500 me-2 my-auto absolute top-2/4 right-2 -translate-y-2/4' icon={ icon } />
+         <FontAwesomeIcon className='text-md text-red-500 me-2 my-auto absolute top-2/4 right-2 -translate-y-2/4' />
          <label className='text-red-500 text-start font-bold text-xs capitalize px-1 mb-1' htmlFor = {`${ type }`} > { placeholder } </label>
          <input className='w-full border border-gray-300 focus:outline-red-500 rounded-full px-6 py-3 text-xs' type = {`${ type }`} name = {`${ type }`} id = {`${ id }`} required/>
       </div>

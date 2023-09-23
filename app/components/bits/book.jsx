@@ -1,14 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBook, faClose, faHandPaper, faNewspaper } from '@fortawesome/free-solid-svg-icons'
+import { faClose} from '@fortawesome/free-solid-svg-icons'
 import Button from './button'
 import Input from './input'
 
-export default function Book () {
+export default function Book ({ close, visible }) {
    return(
-      <div className='bg-white border fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2/5 p-8 shadow-2xl' >
-         <div className="close flex justify-end p-4 hover:bg-red-50 rounded-full">
-            <FontAwesomeIcon className='text-red-500 text-2xl' icon = { faClose } />
-         </div> 
+      <div className=  { `${ visible? 'visible': 'invisible' } bg-white border fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2/5 p-8 shadow-2xl z-20` } >
+         <div className=" flex justify-center w-10 h-10 ms-auto rounded-full  text-red-500 hover:bg-red-50 me-2" onClick={ () => close(1) } >
+            <FontAwesomeIcon className='text-2xl font-bold mx-3 my-auto' icon={faClose} />
+         </div>
 
          <h1 className='text-start text-lg font-light my-1 text-black' >Descriptions & Pricing</h1>
          <hr className='w-8/12 me-auto' />

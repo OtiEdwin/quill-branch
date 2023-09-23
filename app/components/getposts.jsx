@@ -54,11 +54,11 @@ export default function Post({ postData }) {
 
             <div className='flex flex-row justify-end'>
               <div className='likes flex flex-col justify-center me-1 p-2 h-16 w-16 rounded-full hover:bg-red-50'>
-                  <FontAwesomeIcon className={`text-lg text-${ postData.shared ? 'red' : 'gray' }-300 mx-3 my-auto`} icon={faHeart} />
+                  <FontAwesomeIcon className={`text-lg ${ postData.liked ? 'text-red-500' : 'text-gray-300' } mx-3 my-auto`} icon={faHeart} />
                   <div className='text-center text-xs font-bold text-black'>{ shortHandNum(postData.likes) }</div>
               </div>
               <div className='share flex flex-col justify-center me-1 p-2 h-16 w-16 rounded-full hover:bg-red-50'>
-                  <FontAwesomeIcon className={`text-lg text-${ postData.shared ? 'red' : 'gray' }-300 mx-3 my-auto`} icon={faShare} />
+                  <FontAwesomeIcon className={`text-lg ${ postData.shared ? 'text-red-500' : 'text-gray-300' } mx-3 my-auto`} icon={faShare} />
                   <div className='text-center text-xs font-bold text-black'>{ shortHandNum(postData.shares) }</div>
               </div>
             </div>            
@@ -90,11 +90,11 @@ export default function Post({ postData }) {
 
         <div className='actons flex flex-row justify-end'>
           <div className='likes flex flex-col justify-center p-2 me-1 h-16 w-16 rounded-full hover:bg-red-50'>
-              <FontAwesomeIcon className={`text-lg text-${ postData.liked ? 'red' : 'gray' }-300 mx-3 my-auto`} icon={faHeart} />
+              <FontAwesomeIcon className={`text-lg ${ postData.liked ? 'text-red-500' : 'text-gray-300' } mx-3 my-auto`} icon={faHeart} />
               <div className='text-center text-xs font-bold text-black'>{ shortHandNum(postData.likes) }</div>
           </div>
           <div className='share flex flex-col justify-center p-2 me-1 h-16 w-16 rounded-full hover:bg-red-50'>
-              <FontAwesomeIcon className={`text-lg text-${ postData.shared ? 'red' : 'gray' }-300 mx-3 my-auto`} icon={faShare} />
+              <FontAwesomeIcon className={`text-lg ${ postData.shared ? 'text-red-500' : 'text-gray-300' } mx-3 my-auto`} icon={faShare} />
               <div className='text-center text-xs font-bold text-black'>{ shortHandNum(postData.shares) }</div>
           </div>
         </div>

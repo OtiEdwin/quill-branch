@@ -3,12 +3,12 @@ import { faBook, faClose, faHandPaper, faNewspaper } from '@fortawesome/free-sol
 import Button from './button'
 import Input from './input'
 
-export default function Shortlet () {
+export default function Shortlet ({ close, visible }) {
    return(
-      <div className='bg-white border absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2/5 p-8 shadow-2xl' >
-               <div className="close flex justify-end p-4 hover:bg-red-50 rounded-full">
-         <FontAwesomeIcon className='text-red-500 text-2xl' icon = { faClose } />
-      </div> 
+      <div className={ `${ visible? 'visible': 'invisible' } bg-white border absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2/5 p-8 shadow-2xl`} >
+         <div className="close flex justify-end p-4 hover:bg-red-50 rounded-full" onClick={ () => close(2) }>
+            <FontAwesomeIcon className='text-red-500 text-2xl' icon = { faClose }/>
+         </div> 
 
          <h1 className='text-start text-lg font-light my-1 text-black' >Descriptions</h1>
          <hr className='w-8/12 me-auto' />
