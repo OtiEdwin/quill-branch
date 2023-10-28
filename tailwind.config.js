@@ -14,6 +14,7 @@ module.exports = {
       },
       height: {
         '85' : '85vh',
+        '8.5/10' : '85%',
       },
       minHeight: {
         '40' : '10rem',

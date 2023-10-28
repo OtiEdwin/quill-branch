@@ -2,11 +2,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle, faClose } from '@fortawesome/free-solid-svg-icons'
 import Button from './button'
 
-export default function Info ({message, error, close, visible }) {
+export default function Info ({message, error, switchState, visible }) {
    return(
       <div className = { `${ visible? 'visible': 'invisible' } bg-white border absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2/5 p-8 shadow-2xl` } >
                <div className="close flex justify-end p-4 hover:bg-red-50 rounded-full">
-         <FontAwesomeIcon className='text-red-500 text-2xl' icon = { faClose } onClick={ () => close(3) }/>
+         <FontAwesomeIcon className='text-red-500 text-2xl' icon = { faClose } onClick={ () => switchState('info') }/>
       </div> 
 
          <div className="info flex justify-center">

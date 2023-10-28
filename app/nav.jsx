@@ -1,6 +1,6 @@
-"use cilent"
+'use cilent'
  
-// import { usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,9 +12,9 @@ export default function Nav({ isLoggedIn }){
   // const [ toggleState, setToggleState ] = useState({ toggle : 'none', anti_toggle : 'flex' })  
 
   // useEffect(()=>{
-  //     if ( window.innerWidth <= 500){
-  //         setToggleState({ toggle : 'flex', anti_toggle : 'none' })
-  //     }
+  //   if ( window.innerWidth <= 500){
+  //     setToggleState({ toggle : 'flex', anti_toggle : 'none' })
+  //   }
   // })
 
   return (
@@ -27,7 +27,7 @@ export default function Nav({ isLoggedIn }){
         <div className="flex flex-row justify-center h-full my-auto">
           {
             tabs.map((index)=>{
-              const is_active = 0 //pathname === index.href
+              const is_active = 0 // pathname === index.href
               return(
                 <Link href={ index.href } key = { index.tab } className = { `flex flex-col justify-center h-full my-auto px-4 mx-1 font-semibold text-sm ${ is_active? "text-red-500" : "text-gray-500" } hover:text-red-600 hover:bg-red-50 rounded`} >{ index.tab }</Link>
               ) 
